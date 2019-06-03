@@ -16,22 +16,22 @@ class QuestionFromJSON: Codable {
   let branching: Int?
   let nextQuestion: Int?
   let nextQuestionsArray: [Int]?
-  let answerVatiants: [String]?
+  let answerVariants: [String]?
   var answer: String?
   
   init(_ dictionary: [String: Any]) {
-    question = dictionary["question"] as? String  ?? "No question"
-    type = dictionary["type"] as? String  ?? "open"
-    branching = dictionary["branching"] as? Int  ?? nil
+    question = dictionary["question"] as? String ?? "No question"
+    type = dictionary["type"] as? String ?? "open"
+    branching = dictionary["branching"] as? Int ?? nil
     if branching != nil {
       nextQuestion = nil
-      nextQuestionsArray = dictionary["nextQuestion"] as? [Int]  ?? nil
+      nextQuestionsArray = dictionary["nextQuestionsArray"] as? [Int] ?? nil
     } else {
-      nextQuestion = dictionary["nextQuestion"] as? Int  ?? nil
+      nextQuestion = dictionary["nextQuestion"] as? Int ?? nil
       nextQuestionsArray = nil
     }
-    answerVatiants = dictionary["answerVariants"] as? [String]  ?? nil
-    answer = nil
+    answerVariants = dictionary["answerVariants"] as? [String] ?? nil
+    answer = dictionary["answer"] as? String ?? nil
   }
   
 }
