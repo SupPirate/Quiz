@@ -130,6 +130,16 @@
                                     <segue destination="qiB-pd-jZu" kind="show" identifier="Finish" id="KQy-ix-Mjh"/>
                                 </connections>
                             </button>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="e2O-Ef-NgS">
+                                <rect key="frame" x="0.0" y="303" width="375" height="216"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <date key="date" timeIntervalSinceReferenceDate="581264720.07154202">
+                                    <!--2019-06-03 14:25:20 +0000-->
+                                </date>
+                                <connections>
+                                    <action selector="datePickerValueChanged:" destination="wMw-US-6wQ" eventType="valueChanged" id="O7S-Rm-OVO"/>
+                                </connections>
+                            </datePicker>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -141,6 +151,7 @@
                         <viewLayoutGuide key="safeArea" id="Gzi-fx-ilA"/>
                     </view>
                     <connections>
+                        <outlet property="datePicker" destination="e2O-Ef-NgS" id="mac-Am-jds"/>
                         <outlet property="nextButton" destination="Tdo-Y8-aA1" id="pHC-oQ-nxa"/>
                         <outlet property="questionTitle" destination="Chr-g5-aAZ" id="qhk-7G-aYK"/>
                         <outlet property="tableView" destination="dSX-bU-N07" id="sux-Xr-FC6"/>
@@ -210,6 +221,10 @@
                                 <state key="normal" title="Finish">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="goToLastScreen:" destination="qiB-pd-jZu" eventType="touchUpInside" id="RUC-zC-Va1"/>
+                                    <segue destination="PV5-zC-EYO" kind="presentation" identifier="LastSegue" id="ASs-sJ-kgK"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Results" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pLK-xo-YhF">
                                 <rect key="frame" x="159" y="76" width="56" height="21"/>
@@ -229,6 +244,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ugu-nk-bR3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2615.1999999999998" y="102.99850074962519"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="h99-nh-8wW">
+            <objects>
+                <viewController id="PV5-zC-EYO" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ARQ-Mq-fnS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="31" translatesAutoresizingMaskIntoConstraints="NO" id="aai-OV-etm">
+                                <rect key="frame" x="66" y="293" width="243.5" height="94"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congratulations!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="okK-jj-cMN">
+                                        <rect key="frame" x="0.0" y="0.0" width="243.5" height="31.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You finished the Quiz!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzG-KG-4xk">
+                                        <rect key="frame" x="0.0" y="62.5" width="243.5" height="31.5"/>
+                                        <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="✅" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6sM-U5-djG">
+                                <rect key="frame" x="151" y="137" width="73" height="89"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="52"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="4lO-ue-I8e" firstAttribute="bottom" secondItem="aai-OV-etm" secondAttribute="bottom" constant="280" id="54T-n8-fT5"/>
+                            <constraint firstItem="aai-OV-etm" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="4lO-ue-I8e" secondAttribute="leading" constant="16" id="Zxi-lg-Hxa"/>
+                            <constraint firstItem="4lO-ue-I8e" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="aai-OV-etm" secondAttribute="trailing" constant="16" id="iul-Dd-IIt"/>
+                            <constraint firstItem="aai-OV-etm" firstAttribute="centerX" secondItem="ARQ-Mq-fnS" secondAttribute="centerX" id="w6j-RS-yZB"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4lO-ue-I8e"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dDJ-gK-MOe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3452" y="102.99850074962519"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aSy-FP-zre">

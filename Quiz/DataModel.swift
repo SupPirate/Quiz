@@ -2,8 +2,8 @@
 //  DataModel.swift
 //  Quiz
 //
-//  Created by admin on 29/05/2019.
-//  Copyright © 2019 medisafe. All rights reserved.
+//  Created by Hero on 29/05/2019.
+//  Copyright © 2019 Eugene Gordeev. All rights reserved.
 //
 
 import Foundation

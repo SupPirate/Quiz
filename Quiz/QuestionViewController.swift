@@ -2,8 +2,8 @@
 //  QuestionViewController.swift
 //  Quiz
 //
-//  Created by admin on 29/05/2019.
-//  Copyright © 2019 medisafe. All rights reserved.
+//  Created by Hero on 29/05/2019.
+//  Copyright © 2019 Eugene Gordeev. All rights reserved.
 //
 
 import UIKit
@@ -14,12 +14,12 @@ class QuestionViewController: UIViewController {
   @IBOutlet weak var tableView: UITableView!
   @IBOutlet weak var textField: UITextField!
   @IBOutlet weak var questionTitle: UILabel!
+  @IBOutlet weak var datePicker: UIDatePicker!
   
   var quiz = QuizFile()
   var numberOfCurrentQuestion = Int?(nil)
-//  var branchToChoose = 0
-  
   var checkedItems = [Bool]()
+//  var datePicker = UIDatePicker()
 
 
   override func viewDidLoad() {
@@ -44,19 +44,28 @@ class QuestionViewController: UIViewController {
     switch typeOfCurrentQuestion {
     case "choice":
       textField.isHidden = true
+      datePicker.isHidden = true
     case "date":
-      textField.isHidden = true
       tableView.isHidden = true
+      datePicker.datePickerMode = .date
+      textField.isEnabled = false
     default:
       tableView.isHidden = true
+      datePicker.isHidden = true
+      textField.becomeFirstResponder()
     }
     nextButton.isHidden = true
   }
   
   @IBAction func done() {
     nextButton.isHidden = false
-    quiz.questions[numberOfCurrentQuestion!].answer = textField.text
-    quiz.updateInformation()
+  }
+  
+  @IBAction func datePickerValueChanged(_ sender: Any) {
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateStyle = DateFormatter.Style.short
+    textField.text = dateFormatter.string(from: datePicker.date)
+    nextButton.isHidden = false
   }
   
   @IBAction func nextQuestion(_ sender: UIButton) {
@@ -73,6 +82,9 @@ class QuestionViewController: UIViewController {
           break
         }
       }
+    } else {
+      quiz.questions[currentQuestion].answer = textField.text
+      quiz.updateInformation()
     }
     if quiz.questions[currentQuestion].branching != nil {
       performSegue(withIdentifier: "NextQuestion", sender: quiz.questions[currentQuestion].nextQuestionsArray![branchToChoose])
@@ -92,7 +104,6 @@ class QuestionViewController: UIViewController {
 
 
 extension QuestionViewController: UITableViewDataSource, UITableViewDelegate {
-  
   
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return quiz.questions[numberOfCurrentQuestion!].answerVariants?.count ?? 0

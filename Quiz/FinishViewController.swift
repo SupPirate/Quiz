@@ -2,8 +2,8 @@
 //  FinishViewController.swift
 //  Quiz
 //
-//  Created by admin on 29/05/2019.
-//  Copyright © 2019 medisafe. All rights reserved.
+//  Created by Hero on 29/05/2019.
+//  Copyright © 2019 Eugene Gordeev. All rights reserved.
 //
 
 import UIKit
@@ -19,6 +19,9 @@ class FinishViewController: UIViewController {
     super.viewDidLoad()
   }
   
+  @IBAction func goToLastScreen(_ sender: Any) {
+    performSegue(withIdentifier: "LastSegue", sender: nil)
+  }
 }
 
 extension FinishViewController: UITableViewDataSource {
@@ -36,6 +39,7 @@ extension FinishViewController: UITableViewDataSource {
     
     return cell
   }
+  
   
   
 }
